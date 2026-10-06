@@ -133,7 +133,13 @@ function printOrders() {
     return;
   }
 
-  window.print();
+  formMessage.textContent = "Открываю окно печати. Выберите принтер и подтвердите печать.";
+  try {
+    window.print();
+  } catch (error) {
+    console.error("Не удалось открыть окно печати:", error);
+    showError("Браузер не смог открыть окно печати. Разрешите печать для сайта и попробуйте ещё раз.");
+  }
 }
 
 function clearThermalPrintMode() {
@@ -156,7 +162,14 @@ thermalPrintButton.addEventListener("click", () => {
   document.head.append(pageSize);
   document.body.classList.add("thermal-print");
   window.addEventListener("afterprint", clearThermalPrintMode, { once: true });
-  window.print();
+  formMessage.textContent = "Открываю печать карточек 58 × 50 мм. В окне печати выберите термопринтер и подтвердите печать.";
+  try {
+    window.print();
+  } catch (error) {
+    console.error("Не удалось открыть печать на термопринтере:", error);
+    clearThermalPrintMode();
+    showError("Браузер не смог открыть окно печати. Разрешите печать для сайта и попробуйте ещё раз.");
+  }
 });
 
 updateOrderCount();
