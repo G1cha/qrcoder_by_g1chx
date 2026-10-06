@@ -5,3 +5,8 @@
 QR-коды создаются локально с помощью библиотеки QRCode.js, включённой в `vendor/`. Внешний CDN для генерации не требуется. Номера заказов обрабатываются в браузере и не отправляются стороннему QR-сервису.
 
 Лицензия библиотеки QRCode.js находится в `vendor/LICENSE-qrcodejs.txt`.
+
+Author socials:
+https://t.me/g1chx
+https://www.instagram.com/g1chx
+https://github.com/G1cha
