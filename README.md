@@ -8,5 +8,7 @@ QR-коды создаются локально с помощью библиот
 
 Author socials:
 https://t.me/g1chx
+
 https://www.instagram.com/g1chx
+
 https://github.com/G1cha
