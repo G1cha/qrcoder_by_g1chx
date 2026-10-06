@@ -415,6 +415,12 @@ textarea::placeholder {
   margin-bottom: 20px;
 }
 
+.print-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .results-header .eyebrow {
   margin-bottom: 6px;
 }
@@ -555,6 +561,16 @@ h2 {
     flex-direction: column;
   }
 
+  .print-actions {
+    width: 100%;
+  }
+
+  .print-actions .button {
+    flex: 1 1 auto;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
   .qr-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
@@ -693,5 +709,106 @@ h2 {
     margin: 0;
     padding: 1mm 2mm;
     font-size: 7pt;
+  }
+
+  body.thermal-print {
+    width: 58mm;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .thermal-print .page {
+    width: 58mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .thermal-print .results-header,
+  .thermal-print .results-header * {
+    display: none !important;
+  }
+
+  .thermal-print .results-section,
+  .thermal-print .results-section[hidden] {
+    display: block !important;
+    width: 58mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .thermal-print .qr-grid {
+    display: block !important;
+    width: 58mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .thermal-print .qr-card {
+    display: flex;
+    width: 58mm;
+    min-width: 58mm;
+    height: 50mm;
+    min-height: 50mm;
+    margin: 0;
+    padding: 1mm;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1mm;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-sizing: border-box;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .thermal-print .qr-card:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .thermal-print .qr-code {
+    display: block;
+    width: 34mm;
+    height: 34mm;
+    flex: 0 0 34mm;
+    margin: 0;
+    padding: 2mm;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .thermal-print .qr-code img {
+    display: block !important;
+    width: 30mm !important;
+    height: 30mm !important;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  .thermal-print .qr-code canvas {
+    display: none !important;
+  }
+
+  .thermal-print .qr-order-number {
+    max-width: 46mm;
+    color: #000;
+    font-size: 8pt;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .thermal-print .damaged-badge {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    color: #000;
+    background: #fff;
+    font-size: 7pt;
+    line-height: 1.1;
   }
 }

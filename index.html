@@ -107,9 +107,14 @@
             <p class="eyebrow">Готово к сканированию</p>
             <h2 id="results-title">Ваши QR-коды <span class="results-count" id="results-count"></span></h2>
           </div>
-          <button class="button button-primary print-button" id="print-button" type="button">
-            <span aria-hidden="true">⎙</span> Печать QR-кодов
-          </button>
+          <div class="print-actions">
+            <button class="button button-primary print-button" id="print-button" type="button">
+              <span aria-hidden="true">⎙</span> Печать QR-кодов
+            </button>
+            <button class="button button-secondary print-button" id="thermal-print-button" type="button">
+              <span aria-hidden="true">▤</span> Термопринтер · 58 мм
+            </button>
+          </div>
         </div>
         <div class="qr-grid" id="qr-grid" aria-live="polite"></div>
       </section>

@@ -8,6 +8,7 @@ const trimSpaces = document.querySelector("#trim-spaces");
 const damagedOrder = document.querySelector("#damaged-order");
 const clearButton = document.querySelector("#clear-button");
 const printButton = document.querySelector("#print-button");
+const thermalPrintButton = document.querySelector("#thermal-print-button");
 const formMessage = document.querySelector("#form-message");
 const resultsSection = document.querySelector("#results-section");
 const resultsCount = document.querySelector("#results-count");
@@ -126,12 +127,35 @@ clearButton.addEventListener("click", () => {
   orderInput.focus();
 });
 
-printButton.addEventListener("click", () => {
+function printOrders() {
   if (qrGrid.childElementCount === 0) {
     showError("Сначала создайте QR-коды для печати.");
     return;
   }
 
+  window.print();
+}
+
+function clearThermalPrintMode() {
+  document.body.classList.remove("thermal-print");
+  document.querySelector("#thermal-print-page-size")?.remove();
+}
+
+printButton.addEventListener("click", printOrders);
+
+thermalPrintButton.addEventListener("click", () => {
+  if (qrGrid.childElementCount === 0) {
+    showError("Сначала создайте QR-коды для печати.");
+    return;
+  }
+
+  clearThermalPrintMode();
+  const pageSize = document.createElement("style");
+  pageSize.id = "thermal-print-page-size";
+  pageSize.textContent = "@page { size: 58mm 50mm; margin: 0; }";
+  document.head.append(pageSize);
+  document.body.classList.add("thermal-print");
+  window.addEventListener("afterprint", clearThermalPrintMode, { once: true });
   window.print();
 });
 
