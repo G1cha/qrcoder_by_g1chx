@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080d18">
+    <meta
+      name="description"
+      content="Создавайте и печатайте QR-коды заказов для склада Яндекса."
+    >
+    <title>Генератор QR-кодов by g1chx</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="QR генератор — на главную">
+        <span class="brand-mark" aria-hidden="true">QR</span>
+        <span>QR Generator</span>
+      </a>
+      <nav class="developer-links" aria-label="Контакты разработчика">
+        <span>Разработчик:</span>
+        <a href="https://t.me/g1chx" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="https://www.instagram.com/g1chx" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://github.com/G1cha" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Быстро · удобно · много за раз</p>
+        <h1 id="page-title">QR-коды заказов</h1>
+        <p class="intro-copy">Вставьте номера заказов — для каждого будет создан отдельный QR-код.</p>
+      </section>
+
+      <section class="generator-panel" aria-label="Генератор QR-кодов">
+        <form id="order-form">
+          <label class="field-label" for="order-input">Номера заказов</label>
+          <p class="field-help" id="input-help">Вставьте от 1 до 100 номеров, каждый с новой строки.</p>
+          <textarea
+            id="order-input"
+            name="orders"
+            rows="8"
+            maxlength="12000"
+            placeholder="Например:&#10;123456789&#10;987654321"
+            aria-describedby="input-help"
+            required
+          ></textarea>
+          <div class="input-meta">
+            <span>Один номер на строку</span>
+            <span id="order-count">0 / 100</span>
+          </div>
+
+          <div class="settings">
+            <label class="setting-row" for="trim-spaces">
+              <span class="setting-text">
+                <span class="setting-title">Удалять лишние пробелы</span>
+                <span class="setting-description">Убрать пробелы по краям и повторяющиеся пробелы в номере</span>
+              </span>
+              <input class="switch-input" id="trim-spaces" type="checkbox" checked>
+              <span class="switch" aria-hidden="true"></span>
+            </label>
+            <label class="setting-row" for="damaged-order">
+              <span class="setting-text">
+                <span class="setting-title">Повреждённый заказ</span>
+                <span class="setting-description">Добавить заметную отметку на карточки и при печати</span>
+              </span>
+              <input class="switch-input" id="damaged-order" type="checkbox">
+              <span class="switch" aria-hidden="true"></span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="button button-primary" type="submit">Создать QR-коды</button>
+            <button class="button button-secondary" id="clear-button" type="button">Очистить</button>
+          </div>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="results-section" id="results-section" aria-labelledby="results-title" hidden>
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">Готово к сканированию</p>
+            <h2 id="results-title">Ваши QR-коды <span class="results-count" id="results-count"></span></h2>
+          </div>
+          <button class="button button-primary print-button" id="print-button" type="button">
+            <span aria-hidden="true">⎙</span> Печать QR-кодов
+          </button>
+        </div>
+        <div class="qr-grid" id="qr-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>QR заказы</span>
+      <span>Номера обрабатываются в вашем браузере и не отправляются на сервер.</span>
+    </footer>
+  </body>
+</html>
