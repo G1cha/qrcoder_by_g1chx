@@ -43,6 +43,12 @@ textarea {
   border-bottom: 1px solid #1e293b;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -64,6 +70,41 @@ textarea {
   background: var(--primary);
   font-size: 13px;
   letter-spacing: -0.5px;
+}
+
+.repository-link {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  border: 1px solid #263247;
+  border-radius: 9px;
+  color: #c4d0e1;
+  background: #111a2a;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 150ms, background 150ms, border-color 150ms, transform 150ms;
+}
+
+.repository-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.repository-link:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #172638;
+}
+
+.repository-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .developer-links {
@@ -418,10 +459,13 @@ h2 {
   background: #fff;
 }
 
-.qr-code img,
-.qr-code canvas {
+.qr-code img {
   display: block;
   max-width: 100%;
+}
+
+.qr-code canvas {
+  display: none;
 }
 
 .qr-order-number {
@@ -458,6 +502,17 @@ h2 {
   .site-header {
     min-height: 68px;
     padding: 12px 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .header-left,
+  .developer-links {
+    width: 100%;
+  }
+
+  .header-left {
+    justify-content: space-between;
   }
 
   .developer-links {
@@ -579,5 +634,64 @@ h2 {
   .qr-code canvas {
     width: 38mm !important;
     height: 38mm !important;
+  }
+
+  .qr-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 55mm);
+    justify-content: start;
+    align-items: start;
+    gap: 8mm;
+    width: 100%;
+  }
+
+  .qr-card {
+    display: flex;
+    width: 55mm;
+    min-width: 55mm;
+    height: 58mm;
+    min-height: 58mm;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2mm;
+    padding: 2mm;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .qr-code {
+    display: block;
+    flex: 0 0 38mm;
+    width: 38mm;
+    height: 38mm;
+    margin: 0;
+  }
+
+  .qr-code img {
+    display: block !important;
+    width: 38mm !important;
+    height: 38mm !important;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  .qr-code canvas {
+    display: none !important;
+  }
+
+  .qr-order-number {
+    max-width: 100%;
+    font-size: 9pt;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  .damaged-badge {
+    margin: 0;
+    padding: 1mm 2mm;
+    font-size: 7pt;
   }
 }
